@@ -1,0 +1,28 @@
+body{
+    background-color: aqua;
+}
+.container{
+    background-color: white;
+    display: grid;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    grid-column-gap: 10px;
+    border: solid blue 2px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+.grid-item{
+    text-align: center;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+i{
+    cursor: pointer;
+}
+.done{
+    text-decoration: line-through;
+}

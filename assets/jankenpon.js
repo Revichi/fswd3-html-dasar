@@ -4,13 +4,8 @@ var bot = 0;
 var nama = prompt("Masukkan Nama Anda :");
 
 var main = confirm("Baik "+nama+",Apakah kamu mau main?");
-if (nama != NaN){
-    if (main == true){
-        play();
-    }
-}else{
-    alert("nama tidak diisi!")
-    var nama = prompt("Masukkan Nama Anda :");
+if (main == true){
+     play();
 }
 function play(){
     var com = Math.floor(Math.random() * 3 + 1);
