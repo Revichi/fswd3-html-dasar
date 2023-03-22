@@ -1,3 +1,22 @@
+fetch('https://crudcrud.com/api/f77065ae79fd4dd4a38ac30c01fb777a/todo')
+    .then((response)=> response.json())
+    .then((data)=> console.log(data));
+
+// function load(){
+//     fetch('https://crudcrud.com/api/f77065ae79fd4dd4a38ac30c01fb777a/todo')
+//     .then((response)=> response.json())
+//     .then((data)=>
+//         data.forEach(function(item){
+//         todo.innerHTML +=`
+//         <li class="list-group-item d-flex justify-content-between align-item-center">
+//             <h3 onclick="toggle(this)">${item.list}</h3> <span class="fs-3"><i class="fa-solid fa-trash text-danger" id="delete"></i></span>
+//         </li>
+//         `}));
+// }
+
+// load()
+
+
 var btn = document.getElementById('tambah')
 let inputan = document.getElementById('add')
 const todo = document.getElementById("todo")
@@ -44,8 +63,21 @@ btn.addEventListener('click', function (event) {
 
     storage('Add',inputan.value)
 
-    inputan.value="";
     event.preventDefault()
+    let datapost = {
+        list: inputan.value
+    }
+    let fetchOptions ={
+        method: "POST",
+        headers: 
+            {"Content-Type":"application/json"},
+        body: JSON.stringify(datapost)
+
+    }
+    fetch('https://crudcrud.com/api/f77065ae79fd4dd4a38ac30c01fb777a/todo',fetchOptions)
+        .then((response)=> response.json())
+        .then((data)=> console.log(data));
+    inputan.value="";
 });
 function toggle(el){
     el.classList.toggle('done')
@@ -56,6 +88,14 @@ todo.addEventListener('click',function(event){
         event.target.parentElement.parentElement.remove()
         event.preventDefault()
         storage('Delete',event.target.parentElement.parentElement.textContent.trim())
+        // let hps =event.target.parentElement.parentElement.textContent.trim()
+        // let del ={
+        //     method: "DELETE"
+    
+        // }
+        // fetch(`https://crudcrud.com/api/f77065ae79fd4dd4a38ac30c01fb777a/todo/${hps}`,del)
+        //     .then((response)=> response.json())
+        //     .then((data)=> console.log(data));
     }
 })
 
